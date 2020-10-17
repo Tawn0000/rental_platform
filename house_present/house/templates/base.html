@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{title}}</title>
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<link href="/static/css/style.css" rel="stylesheet">
+<link href="/static/libs/awesome/css/all.css" rel="stylesheet">
+
+<link rel="shortcut icon" href="/static/img/favicon.ico" >
+
+{% block head %}
+{% endblock %}
+
+</head>
+
+<body >
+<div class="wrapper" style="margin-bottom: 0px;">
+
+    <header id="header" class="container" style="padding: 0px 0px 0px;">
+
+      <div id="logo">
+        <a href="/"><img src="/static/img/logo.png" title="" /></a>
+      </div><!-- /logo -->
+
+      <nav id="menu" class="navbar navbar-inverse hidden-xs">
+        <!-- <div style="padding: 0px 0px 0px;"> -->
+        <div class="collapse navbar-collapse" style="padding: 0px 30px 0px;">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/"><i class="glyphicon glyphicon-home"></i> 主页</a></li>
+            <!-- <li><a href="/">Home</a></li> -->
+            <li><a href={% url 'rent' %} >我要租房</a></li>
+            <li><a href={% url 'predict' %} >房价预测</a></li>
+            <li><a href={% url 'feedback' %} >意见反馈</a></li>
+          </ul>
+        </div>
+        <!-- <div> -->
+      </nav><!-- /nav -->
+    </header>
+
+{% block header %}
+{% endblock %}
+<style>
+/* HTML5布局样式 直接对footer元素设置样式 */
+footer{ background:#fff;border-top:0px solid #000; padding:10px 10px 10px 10px; width:100%}
+.color-F00{ color:#000}
+</style>
+
+<center>
+<footer class="page-footer">
+    <div class="container row center-align">
+        <div class="col s10 m6 l6 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="https://tawn0000.github.io" target="_blank">Tawn</a>
+            |&nbsp;Powered by&nbsp;<a href="https://www.djangoproject.com/" target="_blank">Django</a>
+            <br>
+        </div>
+    <div>
+    <a href="https://github.com/Tawn0000" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+    <a href="mailto:291534867@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+    <a href="https://twitter.com/Tawn09412753" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/Tawn09412753" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=291534867" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 291534867" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+    <a href="https://m.weibo.cn/profile/5683612140" class="tooltipped" target="_blank" data-tooltip="关注我的微博: https://m.weibo.cn/profile/5683612140" data-position="top" data-delay="50">
+        <i class="fab fa-weibo"></i>
+    </a>
+
+    <a href="https://www.zhihu.com/people/tawn-57/activities" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/tawn-57/activities" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+  </div>
+</div>
+</footer>
+</center>
+</div>
+{% block banner %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+
+<script src="/static/js/clicklove.js" async="async"></script>
+<!-- <script type="text/javascript" src="/static/js/ribbon-dynamic.js" async="async"></script> -->
+</body>
+</html>

@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+<link href="/static/css/search_box.css" rel="stylesheet">
+{% block header %}
+<header name="header" class="container" style="padding: 0px 60px 0px;">
+
+
+{% if request_method == 'POST' %}
+
+<!-- {% for k,v in request_post.items %}
+<label class="col-sm-3 control-label" style="padding: 8px 5px 0px; float: inline-start;">{{k}}: {{v}}</label>
+{% endfor %}
+<br><br><br>
+<br><br><br> -->
+<center>
+<div class="panel panel-default" style="width: 30%">
+    <div class="panel-body">
+      <label>预测价格为: {{predict_price}} 元/月</label>
+      <br>
+      <label>&nbsp &nbsp  注:预测结果仅供参考</label>
+    </div>
+</div>
+<center>
+
+{% endif %}
+
+
+<form action={% url 'predict' %} method="post">
+<div class="form-group" style="padding: 10px 0px 20px;">
+    <label class="col-sm-1 control-label" style="padding: 8px 5px 0px; float: inline-start;">地&nbsp&nbsp&nbsp&nbsp&nbsp址:</label>
+    <div class="col-sm-3">
+		<select name="district" class="form-control">
+      {% for k in district_list %}
+			<option>{{k}}</option>
+      {% endfor %}
+		</select>
+    </div>
+    <div class="col-sm-3">
+    <input name="community" type="text" class="form-control" required placeholder="小区" >
+    </div>
+    <div class="col-sm-3">
+    <input name="details" type="text" class="form-control" required placeholder="具体地址">
+    </div>
+    <br><br><br>
+    <label class="col-sm-1 control-label" style="padding: 8px 5px 0px;">支付方式:</label>
+    <div class="col-sm-3">
+    <select name="pay_way" class="form-control">
+      {% for k in pay_way_list %}
+      <option>{{k}}</option>
+      {% endfor %}
+    </select>
+    </div>
+    <br><br><br>
+    <label class="col-sm-1 control-label" style="padding: 8px 5px 0px;">出租方式:</label>
+    <div class="col-sm-3">
+    <select name="rent_way" class="form-control">
+      {% for k in rent_way_list %}
+      <option>{{k}}</option>
+      {% endfor %}
+    </select>
+    </div>
+    <div class="col-sm-3">
+    <select name="rent_loc" class="form-control">
+      {% for k in rent_loc %}
+      <option>{{k}}</option>
+      {% endfor %}
+    </select>
+    </div>
+    <div class="col-sm-3">
+    <select name="rent_gender" class="form-control">
+      {% for k in rent_gender %}
+      <option>{{k}}</option>
+      {% endfor %}
+    </select>
+    </div>
+    <br><br><br>
+    <label class="col-sm-1 control-label" style="padding: 8px 5px 0px; float: inline-start;">楼&nbsp&nbsp&nbsp&nbsp&nbsp层:</label>
+    <div class="col-sm-3">
+    <select name="floor_height" class="form-control">
+      {% for k in floor_height %}
+      <option>{{k}}</option>
+      {% endfor %}
+    </select>
+    </div>
+    <div class="col-sm-3">
+    <input name="floor_num"  type="text" class="form-control" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" required placeholder="层数,如:8">
+    </div>
+
+    <br><br><br>
+    <label class="col-sm-1 control-label" style="padding: 8px 5px 0px; float: inline-start;">户&nbsp&nbsp&nbsp&nbsp&nbsp型:</label>
+    <div class="col-sm-3">
+    <input name="house_type_1" type="text" class="form-control" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" required placeholder='x室'>
+    </div>
+    <div class="col-sm-3">
+    <input name="house_type_2" type="text" class="form-control" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" required placeholder='x厅'>
+    </div>
+    <div class="col-sm-3">
+    <input name="house_type_3" type="text" class="form-control" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" required placeholder='x卫'>
+    </div>
+
+    <br><br><br>
+    <label class="col-sm-1 control-label" style="padding: 8px 5px 0px; float: inline-start;">朝&nbsp&nbsp&nbsp&nbsp&nbsp向:</label>
+    <div class="col-sm-3">
+    <select name="orientation" class="form-control">
+      {% for k in orientation_list %}
+      <option>{{k}}</option>
+      {% endfor %}
+    </select>
+    </div>
+    <br><br><br>
+    <label class="col-sm-1 control-label" style="padding: 8px 5px 0px; float: inline-start;">装&nbsp&nbsp&nbsp&nbsp&nbsp修:</label>
+    <div  class="col-sm-3">
+    <select name="decoration_type" class="form-control">
+      {% for k in decoration_type_list %}
+      <option>{{k}}</option>
+      {% endfor %}
+    </select>
+    </div>
+    <br><br><br>
+    <label class="col-sm-1 control-label" style="padding: 8px 5px 0px; float: inline-start;">面&nbsp&nbsp&nbsp&nbsp&nbsp积:</label>
+    <div class="col-sm-3">
+    <input name='size' type="text" class="form-control" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" required placeholder='xx平'>
+    </div>
+    <br><br><br>
+    <label class="col-sm-1 control-label" style="padding: 8px 5px 0px; float: inline-start;">地&nbsp&nbsp&nbsp&nbsp&nbsp铁:</label>
+    <div class="col-sm-3">
+    <input name='subway' type="text" class="form-control" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" required placeholder='距离最近地铁站xxx米'>
+    </div>
+    <br><br><br>
+    <label class="col-sm-1 control-label" style="padding: 0px 5px 0px; float: inline-start;">设&nbsp&nbsp&nbsp&nbsp&nbsp施:</label>
+    <div class='left'>
+    <div class="col-sm-8">
+      {% for k in facility1 %}
+      <label class="form-check-label">
+      <input type="checkbox" name="facility" value={{k}}>{{k}}</input>
+      </label>
+      {% endfor %}
+    </div>
+    <div class="col-sm-8">
+      {% for k in facility2 %}
+      <label class="form-check-label">
+      <input type="checkbox" name="facility" value={{k}}>{{k}}</input>
+      </label>
+      {% endfor %}
+    </div>
+    </div>
+    <br><br><br>
+    <label class="col-sm-1 control-label" style="padding: 0px 5px 0px; float: inline-start;">标&nbsp&nbsp&nbsp&nbsp&nbsp签:</label>
+    <div class="left">
+    <div class="col-sm-9">
+    {% for k in tags1 %}
+    <label class="form-check-label">
+    <input type="checkbox" name="tag" value={{k}}>{{k}}</input>
+    </label>
+    {% endfor %}
+    </div>
+
+    <div class="col-sm-9">
+    {% for k in tags2 %}
+    <label class="form-check-label">
+    <input type="checkbox" name="tag" value={{k}}>{{k}}</input>
+    </label>
+    {% endfor %}
+    </div>
+
+    <div class="col-sm-9">
+    {% for k in tags3 %}
+    <label class="form-check-label">
+    <input type="checkbox" name="tag" value={{k}}>{{k}}</input>
+    </label>
+    {% endfor %}
+    </div>
+
+    <div class="col-sm-9">
+    {% for k in tags4 %}
+    <label class="form-check-label">
+    <input type="checkbox" name="tag" value={{k}}>{{k}}</input>
+    </label>
+    {% endfor %}
+    </div>
+    </div>
+<br><br><br>
+<br><br><br>
+
+<div style="padding: 20px 300px 20px;">
+<input type="submit" class="btn btn-info" onclick="" value="提交预测">
+<input type="reset" class="btn btn-info"  value="重置条件">
+</div>
+
+</div>
+<br><br><br>
+</header>
+
+<script type="text/javascript">
+  //未填写的input 边框变红色
+  $('input[type=text]').each(function(i,v){
+        $(v).blur(function(){
+            if($(v).val() == ''){
+                $(v).css('border-color','red');
+                $(v).focus();
+            }else{
+                $(v).css('border-color', '#ece9e9');
+            }
+        })
+    })
+</script>
+
+
+<script type="text/javascript">
+var input = document.getElementsByTagName("input");
+var select = document.getElementsByTagName("select");
+var request_method = "{{request_method}}";
+var request_post = {{request_post|safe}};
+
+// alert(request_post.facility.length);
+
+for (var i = 0; i < input.length; i++)
+{
+  if(input[i].type == "submit" || typeof(request_post[input[i].name]) == "undefined") continue;
+  if(input[i].type != "checkbox")
+    input[i].value =  request_post[input[i].name];
+  else {
+    for(var j = 0; j < request_post[input[i].name].length; j++){
+    if(input[i].value == request_post[input[i].name][j])
+        input[i].checked = true;
+      }
+  }
+}
+
+for (var i = 0; i < select.length; i++)
+{
+    if(typeof(request_post[select[i].name]) != "undefined")
+      select[i].value = request_post[select[i].name];
+}
+
+</script>
+
+
+
+<!-- <script>
+function submit()
+{
+  var input_path = "";
+  var input = document.getElementsByTagName("input");
+  var flag = false;
+  for (var i = 0; i < input.length; i++)
+  {
+    if(input[i].type == "submit") continue;
+    if(input[i].type != "checkbox" || input[i].checked)
+      {
+      if(flag) input_path += '&';
+      else flag = true;
+      input_path += input[i].name + '=' + input[i].value;
+      }
+  }
+  var select_path = "";
+  flag = false;
+  var select = document.getElementsByTagName("select");
+  for (var i = 0; i < select.length; i++)
+    {
+      if(flag)
+        select_path += '&';
+      else
+        flag = true;
+      select_path += select[i].name + '=' + select[i].options[select[i].selectedIndex].text;
+    }
+  var res = input_path;
+  if(select_path != "") res += '&' + select_path;
+  alert(res);
+};
+</script> -->
+
+
+<style>
+.left {
+    position: absolute;
+    left: 350px;
+    wnameth: 900px;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,339 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<!-- <link href="/static/css/matery.css" rel="stylesheet"> -->
+<link href="/static/css/search_box.css" rel="stylesheet">
+<style>
+.abc{ color:#FF0000}
+</style>
+{% endblock %}
+
+{% block header %}
+<div class="search-box" style="padding: 0px 15px 0px; margin-top: 0px;">
+<div class="con">
+<div class="search-listbox">
+<dl class="search-list clearfix" id="rentid_D04_01">
+    <dt>区域：</dt>
+    <dd style="position: relative;">
+        {% if not request_get.district %}
+        <a href="{{path_prefix_f}}{{path_prefix_map.district}}"  class="org bold" >不限</a>
+        {% else %}
+        <a href="{{path_prefix_f}}{{path_prefix_map.district}}" >不限</a>
+        {% endif %}
+        {% for k in district_map.keys %}
+        {% if k == request_get.district %}
+        <a href="{{path_prefix_f}}{{path_prefix_map.district}}district={{k}}" class="org bold" >{{k}}</a>
+        {% else %}
+        <a href="{{path_prefix_f}}{{path_prefix_map.district}}district={{k}}" >{{k}}</a>
+        {% endif %}
+        {% endfor %}
+    </dd>
+</dl>
+
+<dl class="search-list clearfix" id="rentid_D04_02">
+    <dt>租金：</dt>
+    <dd style="position: relative;">
+        {% if not request_get.price %}
+        <a  href="{{path_prefix_f}}{{path_prefix_map.price}}"  class="org bold" >不限</a>
+        {% else %}
+        <a  href="{{path_prefix_f}}{{path_prefix_map.price}}" >不限</a>
+        {% endif %}
+        {% for k,v in price_map.items %}
+        {% if k == request_get.price %}
+        <a  rel="nofollow"  href="{{path_prefix_f}}{{path_prefix_map.price}}price={{k}}" class="org bold">{{v}}</a>
+        {% else %}
+        <a  rel="nofollow"  href="{{path_prefix_f}}{{path_prefix_map.price}}price={{k}}" >{{v}}</a>
+        {% endif %}
+        {% endfor %}
+
+        <!-- <input type="text" name="txt" class="inputSmall" value='' id="minprice" />-<input
+            type="text" name="txt" class="inputSmall" value='' id="maxprice" />元  <input
+                type="button" name="btu" value="确定" class="btnSmall" id="pricBtn" style="cursor: pointer;" /> -->
+    </dd>
+</dl>
+
+<dl class="search-list clearfix" id="rentid_D04_02">
+    <dt>地铁：</dt>
+    <dd style="position: relative;">
+        {% if not request_get.subway %}
+        <a  href="{{path_prefix_f}}{{path_prefix_map.subway}}"  class="org bold"  >不限</a>
+        {% else %}
+        <a  href="{{path_prefix_f}}{{path_prefix_map.subway}}" >不限</a>
+        {% endif %}
+
+        {% for k,v in subway_map.items %}
+        {% if k == request_get.subway %}
+        <a  rel="nofollow"  href="{{path_prefix_f}}{{path_prefix_map.subway}}subway={{k}}" class="org bold" >{{v}}</a>
+        {% else %}
+        <a  rel="nofollow"  href="{{path_prefix_f}}{{path_prefix_map.subway}}subway={{k}}" >{{v}}</a>
+        {% endif %}
+        {% endfor %}
+
+        <!-- <input type="text" name="txt" class="inputSmall" value='' id="maxprice">米以内    </input>
+        <input type="button" name="btu" value="确定" class="btnSmall" id="pricBtn" style="cursor: pointer;" /> -->
+    </dd>
+</dl>
+
+<dl class="search-list clearfix" id="rentid_D04_03">
+    <dt>户型：</dt>
+    <dd style="position: relative;">
+        {% if not request_get.house_type %}
+        <a href="{{path_prefix_f}}{{path_prefix_map.house_type}}" class="org bold" >不限</a>
+        {% else %}
+        <a href="{{path_prefix_f}}{{path_prefix_map.house_type}}"  >不限</a>
+        {% endif %}
+
+        {% for k,v in house_type_map.items %}
+        {% if k == request_get.house_type %}
+        <a  rel="nofollow"  href="{{path_prefix_f}}{{path_prefix_map.house_type}}house_type={{k}}" class="org bold">{{v}}</a>
+        {% else %}
+        <a  rel="nofollow"  href="{{path_prefix_f}}{{path_prefix_map.house_type}}house_type={{k}}" >{{v}}</a>
+        {% endif %}
+        {% endfor %}
+
+    </dd>
+</dl>
+
+
+<dl class="search-list clearfix" id="rentid_D04_09">
+    <dt>方式：</dt>
+    <dd style="position: relative;">
+        {% if not request_get.rent_way %}
+        <a  href="{{path_prefix_f}}{{path_prefix_map.rent_way}}"  class="org bold" >不限</a>
+        {% else %}
+        <a  href="{{path_prefix_f}}{{path_prefix_map.rent_way}}" >不限</a>
+        {% endif %}
+        {% for k,v in rent_way_map.items %}
+        {% if k == request_get.rent_way %}
+        <a  rel="nofollow"  href="{{path_prefix_f}}{{path_prefix_map.rent_way}}rent_way={{k}}" class="org bold">{{v}}</a>
+        {% else %}
+        <a  rel="nofollow"  href="{{path_prefix_f}}{{path_prefix_map.rent_way}}rent_way={{k}}" >{{v}}</a>
+        {% endif %}
+        {% endfor %}
+
+    </dd>
+</dl>
+
+
+<dl class="search-list clearfix" >
+    <dt>朝向：</dt>
+    <dd style="position: relative;">
+        {% if not request_get.orientation %}
+        <a  href="{{path_prefix_f}}{{path_prefix_map.orientation}}"  class="org bold">不限</a>
+        {% else %}
+        <a  href="{{path_prefix_f}}{{path_prefix_map.orientation}}" >不限</a>
+        {% endif %}
+        {% for k,v in orientation_map.items %}
+        {% if k == request_get.orientation %}
+        <a  rel="nofollow"  href="{{path_prefix_f}}{{path_prefix_map.orientation}}orientation={{k}}" class="org bold">朝{{v}}</a>
+        {% else %}
+        <a  rel="nofollow"  href="{{path_prefix_f}}{{path_prefix_map.orientation}}orientation={{k}}" >朝{{v}}</a>
+        {% endif %}
+        {% endfor %}
+
+    </dd>
+</dl>
+
+
+<dl class="search-list clearfix" >
+    <dt>来源：</dt>
+    <dd style="position: relative;">
+        {% if not request_get.origin %}
+        <a  href="{{path_prefix_f}}{{path_prefix_map.origin}}"  class="org bold">不限</a>
+        {% else %}
+        <a  href="{{path_prefix_f}}{{path_prefix_map.origin}}" >不限</a>
+        {% endif %}
+        {% for k,v in origin_map.items %}
+        {% if k == request_get.origin %}
+        <a  rel="nofollow"  href="{{path_prefix_f}}{{path_prefix_map.origin}}origin={{k}}" class="org bold">{{v}}</a>
+        {% else %}
+        <a  rel="nofollow"  href="{{path_prefix_f}}{{path_prefix_map.origin}}origin={{k}}" >{{v}}</a>
+        {% endif %}
+        {% endfor %}
+
+    </dd>
+</dl>
+
+<script>
+function change_path(obj, name){
+name = encodeURI(name);
+// alert(name)
+obj.href = obj.href.replace(name,'').replace(/&&/,'&');
+// alert(obj.href);
+}
+
+</script>
+
+<dl class="search-list clearfix" >
+    <dt>设施：</dt>
+    <ul class="clearfix choose_screen">
+      {% for k in facility1 %}
+      {% if k in facilities %}
+        <a href="{{path_prefix_f}}{{path_prefix}}" class="mt12" onclick="change_path(this, 'facility={{k}}')"><span class="abc note colorRed">{{k}}</span></a>
+      {% else %}
+        <a href="{{path_prefix_f}}{{path_prefix}}facility={{k}}" class="mt12"><span class="note colorBlue">{{k}}</span></a>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    <dt>   </dt>
+    <ul class="clearfix choose_screen">
+      {% for k in facility2 %}
+      {% if k in facilities %}
+        <a href="{{path_prefix_f}}{{path_prefix}}" class="mt12" onclick="change_path(this, 'facility={{k}}')"><span class="abc note colorRed">{{k}}</span></a>
+      {% else %}
+        <a href="{{path_prefix_f}}{{path_prefix}}facility={{k}}" class="mt12"><span class="note colorBlue">{{k}}</span></a>
+      {% endif %}
+      {% endfor %}
+    </ul>
+</dl>
+
+<dl class="search-list clearfix" >
+    <dt>标签：</dt>
+    <ul class="clearfix choose_screen">
+      {% for k in tags1 %}
+      {% if k in tags %}
+      <a href="{{path_prefix_f}}{{path_prefix}}" class="mt12" onclick="change_path(this, 'tag={{k}}')"><span class="abc note colorRed">{{k}}</span></a>
+      {% else %}
+      <a href="{{path_prefix_f}}{{path_prefix}}tag={{k}}" class="mt12"><span class="note colorGreen">{{k}}</span></a>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    <dt>   </dt>
+    <ul class="clearfix choose_screen">
+      {% for k in tags2 %}
+      {% if k in tags %}
+      <a href="{{path_prefix_f}}{{path_prefix}}" class="mt12" onclick="change_path(this, 'tag={{k}}')"><span class="abc note colorRed">{{k}}</span></a>
+      {% else %}
+      <a href="{{path_prefix_f}}{{path_prefix}}tag={{k}}" class="mt12"><span class="note colorGreen">{{k}}</span></a>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    <dt>   </dt>
+    <ul class="clearfix choose_screen">
+      {% for k in tags3 %}
+      {% if k in tags %}
+      <a href="{{path_prefix_f}}{{path_prefix}}" class="mt12" onclick="change_path(this, 'tag={{k}}')"><span class="abc note colorRed">{{k}}</span></a>
+      {% else %}
+      <a href="{{path_prefix_f}}{{path_prefix}}tag={{k}}" class="mt12"><span class="note colorGreen">{{k}}</span></a>
+      {% endif %}
+      {% endfor %}
+    </ul>
+</dl>
+
+
+
+</div>
+</div>
+</div>
+
+<style>
+	.title > a{display:inline-block;max-width:534px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+	.title >i{margin-top:6px;vertical-align:top!important;}
+	.title >i.icon_hot{margin-top:0;margin-left:5px;}
+	.title >i.icon_hy{display:inline-block;position:relative;margin-left:5px;margin-top:4px !important;width:73px;height:20px;background:url(//static.soufunimg.com/esf/zu/zfonline/img/icon_hy.png) no-repeat;vertical-align:top;cursor:pointer;}
+	.title >i.icon_hy>em{display:none;position:absolute;bottom:-35px;left:50%;margin-left:-140px;padding:0 15px;height:34px;line-height:34px;font-size:14px;font-style:normal;font-weight:normal;color:#333;background:#fff;box-shadow:0px 2px 8px 0px rgba(0,0,0,0.15);border-radius:1px;white-space:nowrap;}
+	.title >i.icon_hy:hover>em{display:block;}
+</style>
+<div style="padding: 0px 15px 0px;">
+<div class="list-box mt20" id="listBox">
+
+<div class="houseList">
+    {%for house in houses %}
+    <dl class="list hiddenMap rel">
+
+
+        <!-- <dt class="img rel floatl" id="rentid_D09_03_01" data-type="houselistshow" data-ajax="{&quot;houseid&quot;:&quot;378982933&quot;,&quot;agentid&quot;:&quot;166579956&quot;,&quot;housetype&quot;:&quot;agt&quot;,&quot;listingtype&quot;:&quot;2,8&quot;}">
+
+
+
+
+            <!-- <span class="icon_video" style="display: block"></span> -->
+            <!-- <a target="_blank" href="/chuzu/3_378982933_1.htm" data_channel="2,8" class="">
+                <img class="b-lazy b-loaded" usertype="1" src={{house.pic}} >
+            </a> -->
+            <!-- <p class="txtBg"></p> -->
+
+            <!-- <p class="txt">
+                <span class="iconImg">7</span>
+            </p> -->
+
+        <!-- </dt> -->
+        <dd class="info rel">
+            <p class="title" id="rentid_D09_03_02">
+                <a href={{house.url}} data_channel="2,8" target="_blank" title={{house.name}}>{{house.name}}</a>
+
+
+
+            </p>
+            <p class="font15 mt12 bold">
+                {{house.rent_way}}<span class="splitline">|</span>{{house.house_type}}<span class="splitline">|</span>{{house.size}}<span class="splitline">|</span>朝{{house.orientation}}
+                {% if house.domain == 'sh.zu.fang.com' %}
+                <span class="splitline">|</span><a href=http://{{house.domain}} target="_blank">房天下</a>
+                {% else %}
+                <span class="splitline">|</span><a href=http://{{house.domain}} target="_blank">58同城</a>
+                {% endif %}
+            </p>
+            <p class="gray6 mt12" id="rentid_D09_03_06">{{house.address.district}}-{{house.address.community}}-{{house.address.detail}}</p>
+            <div id="rentid_D09_03_07"><p class="mt12"><span class="note subInfor">{{house.traffic}}</span></p></div>
+            <!-- <div id="rentid_D09_03_07"><p class="mt12"><span class="note subInfor">{{house.traffic}}</span></p></div> -->
+
+
+            <p class="gray6 mt15" style="line-height: 16px;">
+            </p>
+
+            <p class="mt12">
+            {% for tag in house.tag %}
+            <span class="note colorGreen">{{tag}}</span>
+            {% endfor %}
+            </p>
+            <p class="mt12">
+            {% for facility in house.facility %}
+            <span class="note colorBlue">{{facility}}</span>
+            {% endfor %}
+            </p>
+
+            <div class="moreInfo">
+
+            <p class="mt5 alingC"><span class="price">{{house.price}}</span>元/月</p>
+
+            </div>
+            <!-- 0505compare start -->
+
+            <!-- <div style="display: none;" class="notice" id="rentid_D09_03_04">
+                <a class="gray6 duibi">对比</a>
+            </div> -->
+
+            <!-- 0505compare end -->
+        </dd>
+    </dl>
+    {% empty %}
+    <br><br><br><br><br><br><br><br><br<br><br>
+    <br><br><br><br><br><br><br><br><br<br><br>
+    {% endfor %}
+</div>
+
+<!--房源列表结束-->
+<div id="fuceng" class="layer" style="display: none">
+</div>
+
+
+<!--houseList end-->
+<!--fenye star-->
+<div class="fanye" id="rentid_D10_01">
+    <a href="{{path_prefix_f}}{{path_prefix_map.page}}" >首页</a>
+    {% for p in page_list%}
+    {% if p == page_now %}
+    <a href="{{path_prefix_f}}{{path_prefix_map.page}}page={{p}}" class="pageNow">{{p}}</a>
+    {% else %}
+    <a href="{{path_prefix_f}}{{path_prefix_map.page}}page={{p}}">{{p}}</a>
+    {% endif %}
+    {% endfor %}
+    <a href="{{path_prefix_f}}{{path_prefix_map.page}}page={{page_next}}">下一页</a>
+    <a href="{{path_prefix_f}}{{path_prefix_map.page}}page={{page_end}}">末页</a>
+    <span class="txt">共{{page_num}}页</span>
+</div>
+<!--fenye end-->
+
+    </div>
+</div>
+{% endblock %}

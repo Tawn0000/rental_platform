@@ -1,0 +1,12 @@
+__pycache__
+.ipynb_checkpoints
+.DS_Store
+test.ipynb
+shanghai.house_new.csv
+draft.html
+*.csv
+*.rar
+/house_crawl/draft.py
+/house_present/house/templates/test.html
+/house_predict/model/*
+/data/*

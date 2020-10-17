@@ -1,0 +1,339 @@
+body {
+     background-color: #000000;
+     font-family: Helvetica,Arial,sans-serif ! important;
+}
+
+a {
+     color: #333333;
+     text-decoration: none ! important;
+}
+
+a:hover {
+     color: #333333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+     font-family: Tahoma,Arial,Helvetica,sans-serif ! important;
+}
+
+h1, h2, h3 {
+
+}
+
+.wrapper {
+     background-attachment: scroll ! important;
+     background-color: #F8F8F8;
+     background-image: none;
+     background-position: center top ! important;
+     background-repeat: repeat ! important;
+     border-radius: 0px;
+     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+     margin: 20px auto 25px;
+     max-width: 980px;
+     min-width: 283px;
+     padding: 0px;
+}
+
+#logo {
+     margin-left: 25px;
+}
+
+#logo {
+     padding: 30px 5px;
+     position: relative;
+     width: 300px;
+}
+
+.navbar-inverse {
+     background-color: #000000;
+     border: medium none;
+}
+
+.navbar {
+     border-radius: 0px;
+     min-height: 46px;
+}
+
+#menu a {
+     color: #FFFFFF;
+     cursor: pointer;
+     font-family: Arial,Helvetica,sans-serif ! important;
+     font-weight: normal;
+     padding: 13px 15px;
+     position: relative;
+}
+
+#menu a:hover {
+     background-color: #66BCDA ! important;
+}
+
+#main {
+     background: none repeat scroll 0px 0px #FFFFFF;
+     margin-bottom: 20px;
+     margin-left: 15px;
+     max-width: 630px ! important;
+     padding: 15px 20px;
+}
+
+.breadcrumb h1 {
+     display: inline-block;
+     font-family: Helvetica,Arial,sans-serif ! important;
+     font-size: 12px;
+     font-weight: normal;
+     margin: 0px;
+     padding: 0px;
+     text-transform: none;
+}
+
+#main .breadcrumb {
+     background: none repeat scroll 0px 0px transparent;
+     color: #626C72;
+     font-family: Helvetica,Arial,sans-serif ! important;
+     font-size: 12px;
+     margin-bottom: 10px;
+     padding: 0px;
+     text-align: right;
+}
+
+#main .mtitle {
+     font-size: 24px;
+}
+
+#similar {
+     margin-right: -15px;
+}
+
+#similar .item {
+     display: inline-block;
+     float: left;
+     margin: 0px 0px 20px;
+     max-height: 24.5em;
+     min-height: 18em;
+     overflow: hidden;
+     padding: 0px 15px 0px 0px;
+}
+
+#similar .thumbnail img {
+     height: auto;
+     max-width: 100%;
+}
+
+#similar .info {
+     font-family: Helvetica,Arial,sans-serif ! important;
+     font-size: 11px;
+}
+
+#similar .info h4 {
+     font-size: 16px;
+     max-height: 4.3em;
+     overflow: hidden;
+}
+
+section {
+     border-bottom: 1px solid #F6F6F6 ! important;
+     clear: both;
+     margin-bottom: 15px;
+     padding-bottom: 15px;
+}
+
+section header {
+     margin: 10px 0px 15px;
+}
+
+section h2 {
+     font-size: 18px;
+     line-height: 27px;
+     margin-bottom: 5px;
+     padding: 0px;
+}
+
+section h2 a {
+     font-size: 24px;
+     font-weight: normal;
+     letter-spacing: 0.5px;
+     margin: 0px;
+     padding-bottom: 7px;
+}
+
+section .meta {
+     color: #999999;
+     font-size: 11px;
+     letter-spacing: -0.2px;
+}
+
+section .thumbnail {
+     background-color: #FFFFFF;
+     border: medium none;
+     float: left;
+     height: auto ! important;
+     margin: 0px 10px 10px 0px;
+     max-width: 250px ! important;
+     padding: 4px;
+}
+
+section .thumbnail img {
+     max-width: 100%;
+}
+
+.box-gallery2 .box-content, .box-gallery3 .box-content {
+     margin: 0px -15px 0px 0px;
+     padding-bottom: 0px;
+}
+
+.box-gallery1 .box-content {
+     font-family: Helvetica,Arial,sans-serif ! important;
+     font-size: 11px;
+}
+
+.box-gallery1 .item {
+     margin: 0px 0px 10px;
+}
+
+.box-gallery1 .info a {
+     font-weight: bold;
+     max-height: 35px;
+     min-height: 35px;
+     overflow: hidden;
+}
+
+.box-gallery1 .info {
+     display: block;
+     float: left;
+     max-height: 6em;
+     max-width: 66%;
+     min-height: 6em;
+     overflow: hidden;
+}
+
+.box-gallery1 .thumbnail {
+     border: medium none;
+     float: left;
+     margin: 2px 12px 0px 0px;
+     max-width: 29%;
+     padding: 0px;
+}
+
+.box-gallery2 .thumbnail {
+     border: medium none;
+     float: left;
+     margin: 0px 12px 12px 0px;
+     max-width: 45%;
+     padding: 0px;
+}
+
+.box-gallery3 .thumbnail {
+     border: medium none;
+     float: left;
+     margin: 0px 12px 12px 0px;
+     max-width: 29%;
+     padding: 0px;
+}
+
+.box {
+     background-color: #FFFFFF ! important;
+     border-radius: 0px;
+     margin-bottom: 15px;
+}
+
+.box .box-heading {
+     background-color: #000000 ! important;
+     background-image: none;
+     border-radius: 0px;
+     padding: 0px 15px;
+}
+
+.box-heading span {
+     color: #FFFFFF;
+     font-family: Helvetica,Arial,sans-serif ! important;
+     line-height: 30px;
+}
+
+.box-content {
+     padding: 12px 15px 10px;
+}
+
+footer {
+     background-color: #1F1F1F;
+     border-top: 3px solid #000000;
+     clear: both;
+     overflow: auto;
+     padding: 20px 0px;
+}
+
+footer h3 {
+     border-bottom: 1px solid #2E2E2E;
+     color: #66BCDA ! important;
+     font-family: Arial,Helvetica,sans-serif ! important;
+     font-size: 18px;
+     line-height: 27px;
+     margin-bottom: 15px;
+     margin-top: 0px;
+     padding-bottom: 5px;
+     text-transform: uppercase;
+}
+
+footer a, #copyright a {
+     color: #666666;
+}
+
+footer a:hover, #copyright a:hover {
+     color: #FFFFFF;
+}
+
+#about_links a {
+     margin: 0px 10px;
+     text-transform: uppercase;
+}
+
+#copyright {
+     background-color: #191919;
+     background-repeat: repeat repeat;
+     border-top: 1px solid #1F1F1F;
+     clear: both;
+     color: #545454 ! important;
+     font-family: Helvetica,Arial;
+     font-size: 11px;
+     margin-top: 0px;
+     overflow: auto;
+     padding: 20px;
+}
+
+.declare {
+     color: #CCCCCC;
+     font-size: 11px;
+}
+
+#nav {
+    position: relative;
+}
+
+#searchform {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+#searchform #keyword {
+    width: 220px;
+    background: #FFF;
+    color: #333;
+    font-size: 12px;
+    font-family: Tahoma, Verdana;
+    display: block;
+    float: left;
+    border: none;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 3px;
+}
+#searchform #searchsubmit {
+    background: #333;
+    color: #FFF;
+    font-size: 12px;
+    font-family: Tahoma, Verdana;
+    display: block;
+    float: left;
+    border: none;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px;
+}

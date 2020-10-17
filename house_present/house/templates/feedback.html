@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block header %}
+<form action={% url 'feedback' %} method="post">
+<div class="form-group" style="padding: 10px 0px 20px;">
+ <center>
+ <h3 class="title">意见反馈</h3>
+ <br>
+ <textarea name = "feedback"  placeholder="请在此写下您宝贵的意见，我们将会及时作出处理。" class="form-control" id="deblock_udid" name="deblock_udid" rows="10" style="max-width: 50%"></textarea>
+ <br>
+ <div style="padding: 0px 300px 0px; float: inline-start;">
+ <label class="col-sm-3 control-label" style="float:left; padding: 10px 5px 10px 10px; float: inline-start;">您的邮箱:</label>
+ <div class="col-sm-9">
+ <input name="email" type="text" class="form-control" style="float:right;" placeholder='xxxx@xxx.com'>
+ </div>
+ </div>
+<br><br><br>
+<input type="submit" class="btn btn-info" onclick="submit()" value="提交反馈">
+
+ </center>
+</div>
+<br><br><br>
+
+</form>
+
+{% endblock %}
